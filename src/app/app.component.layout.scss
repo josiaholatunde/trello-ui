@@ -1,0 +1,43 @@
+.container {
+  max-width: 100rem;
+  margin: 8rem auto;
+  min-height: 60rem;
+  background: var(--grey-light-2);
+  box-shadow: var(--shadow-dark);
+
+  @media only screen and (max-width: 63rem) {
+      margin: 0;
+      width: 100%;
+      max-width: 100%;
+  }
+}
+.header {
+  background: #fff;
+  border-bottom: 1px solid red;
+  height: 7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4rem;
+}
+.sidebar {
+  background: var(--grey-dark);
+  flex: 0 0 18%;
+}
+.hotel-view {
+  flex-grow: 1; //same as shorthand for flex=1
+  //Test
+  //background: var(--color-primary-light);
+ // background: var(--grey-light-2);
+}
+.content {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  @media only screen and (max-width: 46rem) {
+      flex-direction: column;
+  }
+}
+.flex-container {
+  display: flex;
+}
