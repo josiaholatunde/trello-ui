@@ -20,16 +20,17 @@
   align-items: center;
   font-size: 1.4rem;
 }
+
+.hotel-view {
+  flex-grow: 1; //same as shorthand for flex=1
+}
+
 .sidebar {
+  margin: 0;
   background: var(--grey-dark);
   flex: 0 0 18%;
 }
-.hotel-view {
-  flex-grow: 1; //same as shorthand for flex=1
-  //Test
-  //background: var(--color-primary-light);
- // background: var(--grey-light-2);
-}
+
 .content {
   display: flex;
   text-align: center;

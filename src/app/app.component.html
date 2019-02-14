@@ -18,7 +18,7 @@
            </div>
            <div class="user-nav__icon-box">
                <svg class="user-nav__icon">
-                   <use xlink:href="img/sprite.svg#icon-chat"></use>
+                   <use xlink:href="../assets/img/sprite.svg#icon-chat"></use>
                </svg>
                <span class="user-nav__notification">7</span>
            </div>
@@ -27,5 +27,17 @@
                <span class="user-nav__user-name">Olatunde</span>
            </div>
        </nav>
-  </header>
+    </header>
+
+    <div class="content">
+      <nav class="sidebar">
+        <app-sidebar></app-sidebar>
+      </nav>
+      <main class="hotel-view">
+        <app-gallery></app-gallery>
+        <app-overview></app-overview>
+        <app-detail></app-detail>
+        <app-cta></app-cta>
+      </main>
+    </div>
   </div>
