@@ -7,6 +7,9 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { OverviewComponent } from './components/overview/overview.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { CtaComponent } from './components/cta/cta.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BookingSubjectService } from './services/booking-subject.service';
 
 @NgModule({
   declarations: [
@@ -15,12 +18,14 @@ import { CtaComponent } from './components/cta/cta.component';
     GalleryComponent,
     OverviewComponent,
     DetailComponent,
-    CtaComponent
+    CtaComponent,
+    HeaderComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ BookingSubjectService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
