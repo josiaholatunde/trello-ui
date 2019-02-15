@@ -10,7 +10,7 @@
 
   &__item {
       position: relative;
-
+      z-index: 10;
       &:not(:last-child) {
           margin-bottom: 1rem;
           @media only screen and (max-width: 46rem) {
@@ -42,8 +42,9 @@
       color: var(--grey-light-2);
       transform: scaleY(0);
       transition: transform .5s, width .5s .2s;
+      z-index: -1;
   }
-  &__link:link,
+  &__link,
   &__link:active{
       text-decoration: none;
       color: var(--grey-light-2);

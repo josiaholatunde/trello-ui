@@ -21,6 +21,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+
   &__input {
       font-size: inherit;
       font-family: inherit;
@@ -46,11 +48,13 @@
   &__button {
       border: none;
       cursor: pointer;
+      position: absolute;
+      left: 34rem;
       background: var(--dark-grey-2);
-      &:active {
-
+     /*  &:active {
+          outline: none;
           transform: translateY(2px);
-      }
+      } */
 
   }
 }
@@ -108,4 +112,8 @@
   &__user {
 
   }
+}
+
+.ui-autocomplete-list-item {
+  list-style: none;
 }

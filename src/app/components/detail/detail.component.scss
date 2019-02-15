@@ -10,6 +10,25 @@
   }
 }
 
+.arrow-nav-right {
+  align-self: center;
+  margin-left: 2.5rem;
+  cursor: pointer;
+}
+
+
+.arrow-nav-left {
+  align-self: center;
+  margin-right: 2.5rem;
+  cursor: pointer;
+
+}
+
+.greyButton {
+  color: grey;
+  opacity: 0.2;
+}
+
 
 .description {
   background: orangered;

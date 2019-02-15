@@ -2,6 +2,8 @@ import { AppRouterModule } from './app-router/app-router.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {AutoCompleteModule} from 'primeng/autocomplete';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -15,6 +17,7 @@ import { BookingSubjectService } from './services/booking-subject.service';
 import { BookingSubjectResolver } from './resolvers/booking-subject.resolver';
 import { HomeComponent } from './components/home/home.component';
 import { TestComponent } from './components/test/test.component';
+import {CarouselModule} from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { TestComponent } from './components/test/test.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRouterModule
+    AppRouterModule,
+    CarouselModule,
+    AutoCompleteModule,
+    BrowserAnimationsModule
   ],
   providers: [
     BookingSubjectService,

@@ -1,4 +1,7 @@
 <div class="detail">
+    <div class="arrow-nav-left">
+        <i class="fa fa-angle-left fa-3x" (click)="loadPrevBookingSubject()"></i>
+    </div>
     <div class="description">
         <p class="paragraph">
            {{ bookingSubject.mainDescription }}
@@ -10,9 +13,10 @@
              <li class="list__item" *ngFor="let feature of bookingSubject.features"> {{ feature.title }} </li>
          </ul>
          <div class="recommend">
-             <p class="recommend__count">
+             <p class="recommend__count" *ngIf="bookingSubject.noOfRecommendations > 0">
                  {{ nameOfRecommender }} and {{ bookingSubject.noOfRecommendations - 1}}  recommend this {{ bookingType }}
              </p>
+             <p *ngIf="bookingSubject.noOfRecommendations === 0"> No one recommends this</p>
              <div class="recommend__friends">
                  <img src="../../../assets/img/user-3.jpg" alt="User 3" class="recommend__photo">
                  <img src="../../../assets/img/user-4.jpg" alt="User 4" class="recommend__photo">
@@ -36,5 +40,8 @@
             </figcaption>
         </figure>
          <button class="btn-inline overview__btn">Show All<span>&rarr;</span></button>
+    </div>
+    <div class="arrow-nav-right" [ngClass]="{'greyButton': greyRightButton}">
+      <i class="fa fa-angle-right arrow-style fa-3x" (click)="loadNextBookingSubject()"></i>
     </div>
 </div>

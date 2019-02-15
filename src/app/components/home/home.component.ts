@@ -21,12 +21,17 @@ export class HomeComponent implements OnInit {
       this.bookingSubject = res;
       this.currentBookingSubject = res[0];
       console.log('Current', this.currentBookingSubject);
+      console.log('All', this.bookingSubject);
     });
   }
 
   updateBookingSubject($event: any) {
     this.bookingSubject = $event;
     this.currentBookingSubject = this.bookingSubject[0];
+  }
+
+  updateIndividualBookingSubject($event: any) {
+    this.currentBookingSubject = $event;
   }
 
 }

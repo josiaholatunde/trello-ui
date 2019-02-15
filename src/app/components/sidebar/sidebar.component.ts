@@ -20,7 +20,7 @@ export class SidebarComponent implements OnInit {
   getBookingSubject(bookingType: BookingSubjectType) {
     this.bookingService.getBookingSubjects(bookingType).subscribe((res: BookingSubject[]) => {
      this.bookingSubjectChange.emit(res);
-     this.router.navigate(['bookings', this.bookingType]);
+     this.router.navigate(['bookings', BookingSubjectType[bookingType]]);
     });
   }
 
