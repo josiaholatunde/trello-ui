@@ -1,3 +1,4 @@
+import { BookingSubject } from './../../models/booking-subject';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class OverviewComponent implements OnInit {
 
-  @Input() bookingSubject;
+  @Input() bookingSubject: BookingSubject;
   constructor() { }
 
   ngOnInit() {

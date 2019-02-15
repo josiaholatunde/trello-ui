@@ -1,24 +1,17 @@
 <div class="detail">
     <div class="description">
         <p class="paragraph">
-           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi nisi dignissimos debitis ratione sapiente saepe. Accusantium cumque, quas, ut corporis incidunt deserunt quae architecto voluptate.
+           {{ bookingSubject.mainDescription }}
         </p>
         <p class="paragraph">
-           Accusantium cumque, quas, ut corporis incidunt deserunt quae architecto voluptate delectus, inventore iure aliquid aliquam.
-         </p>
+          {{ bookingSubject.subDescription }}
+        </p>
          <ul class="list">
-             <li class="list__item">Close to the Beach</li>
-             <li class="list__item">Breakfast Included</li>
-             <li class="list__item">Close to the Beach</li>
-             <li class="list__item">Close to the Beach</li>
-             <li class="list__item">Close to the Beach</li>
-             <li class="list__item">Close to the Beach</li>
-             <li class="list__item">Close to the Beach</li>
-             <li class="list__item">Close to the Beach</li>
+             <li class="list__item" *ngFor="let feature of bookingSubject.features"> {{ feature.title }} </li>
          </ul>
          <div class="recommend">
              <p class="recommend__count">
-                 Lucy and 3 other friends recommend this hotel
+                 {{ nameOfRecommender }} and {{ bookingSubject.noOfRecommendations - 1}}  recommend this {{ bookingType }}
              </p>
              <div class="recommend__friends">
                  <img src="../../../assets/img/user-3.jpg" alt="User 3" class="recommend__photo">
@@ -29,32 +22,19 @@
          </div>
     </div>
     <div class="user-reviews">
-        <figure class="review">
+        <figure class="review" *ngFor="let comment of bookingComments">
             <blockquote class="review__text">
-                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga doloremque architecto dicta animi, totam, itaque officia ex.
+              {{ comment.description }}
             </blockquote>
             <figcaption class="review__user">
                 <img src="../../../assets/img/user-4.jpg" class="review__photo" alt="User Photo" />
                 <div class="review__user-box">
-                    <p class="review__user-name">Nick Smith</p>
-                    <p class="review__user-date">Feb. 24, 2019</p>
+                    <p class="review__user-name">{{ comment.fullName }}</p>
+                    <p class="review__user-date">{{ comment.dateCommented | date: 'mediumDate'}}</p>
                 </div>
-                <div class="review__user-rating">7.8</div>
+                <div class="review__user-rating">{{ comment.rating }}</div>
             </figcaption>
         </figure>
-        <figure class="review">
-             <blockquote class="review__text">
-                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga doloremque architecto dicta animi.
-             </blockquote>
-             <figcaption class="review__user">
-                     <img src="../../../assets/img/user-4.jpg" class="review__photo" alt="User Photo" />
-                     <div class="review__user-box">
-                         <p class="review__user-name">Nick Smith</p>
-                         <p class="review__user-date">Feb. 24, 2019</p>
-                     </div>
-                     <div class="review__user-rating">7.8</div>
-                 </figcaption>
-         </figure>
          <button class="btn-inline overview__btn">Show All<span>&rarr;</span></button>
     </div>
 </div>

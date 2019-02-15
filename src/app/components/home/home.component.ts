@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { BookingSubjectService } from './services/booking-subject.service';
-import { BookingSubjectType } from './models/booking-subject-type';
-import { BookingSubject } from './models/booking-subject';
+import { BookingSubjectService } from '../../services/booking-subject.service';
+import { BookingSubjectType } from '../../models/booking-subject-type';
+import { BookingSubject } from '../../models/booking-subject';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class AppComponent implements OnInit {
-  title = 'trello-ui';
+export class HomeComponent implements OnInit {
+
   bookingType = BookingSubjectType.Hotel;
   bookingSubject: BookingSubject[];
   currentBookingSubject: BookingSubject;
@@ -24,8 +24,4 @@ export class AppComponent implements OnInit {
     });
   }
 
-  updateBookingSubject($event: any) {
-    this.bookingSubject = $event;
-    this.currentBookingSubject = this.bookingSubject[0];
-  }
 }

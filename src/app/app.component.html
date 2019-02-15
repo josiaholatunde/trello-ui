@@ -1,20 +1,21 @@
 <div class="container">
 
-    <app-header></app-header>
+  <app-header></app-header>
 
-    <div class="content">
+  <div class="content">
 
-      <nav class="sidebar">
-        <app-sidebar></app-sidebar>
-      </nav>
+    <nav class="sidebar">
+      <app-sidebar (bookingSubjectChange)="updateBookingSubject($event)"></app-sidebar>
+    </nav>
 
-      <main class="hotel-view">
-        <app-gallery></app-gallery>
-        <app-overview [bookingSubject]="bookingSubject"></app-overview>
-        <app-detail></app-detail>
-        <app-cta></app-cta>
-      </main>
-
-    </div>
+    <main class="hotel-view">
+      <app-gallery></app-gallery>
+      <app-overview *ngIf="currentBookingSubject" [bookingSubject]="currentBookingSubject"></app-overview>
+      <app-detail *ngIf="currentBookingSubject" [bookingSubject]="currentBookingSubject"></app-detail>
+      <app-cta [bookingSubject]="currentBookingSubject"></app-cta>
+    </main>
 
   </div>
+
+</div>
+

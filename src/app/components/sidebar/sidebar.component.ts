@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { BookingSubjectService } from 'src/app/services/booking-subject.service';
+import { BookingSubjectType } from 'src/app/models/booking-subject-type';
+import { BookingSubject } from 'src/app/models/booking-subject';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  @Output() bookingSubjectChange = new EventEmitter();
+  bookingType: BookingSubjectType;
+  constructor(private bookingService: BookingSubjectService) { }
 
   ngOnInit() {
+  }
+  getBookingSubject(bookingType: BookingSubjectType) {
+    this.bookingService.getBookingSubjects(bookingType).subscribe((res: BookingSubject[]) => {
+     this.bookingSubjectChange.emit(res);
+    });
   }
 
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { BookingSubject } from 'src/app/models/booking-subject';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-cta',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CtaComponent implements OnInit {
 
+  @Input() bookingSubject: BookingSubject;
   constructor() { }
 
   ngOnInit() {

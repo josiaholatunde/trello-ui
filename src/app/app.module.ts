@@ -10,6 +10,8 @@ import { CtaComponent } from './components/cta/cta.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BookingSubjectService } from './services/booking-subject.service';
+import { BookingSubjectResolver } from './resolvers/booking-subject.resolver';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,17 @@ import { BookingSubjectService } from './services/booking-subject.service';
     OverviewComponent,
     DetailComponent,
     CtaComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule
   ],
-  providers: [ BookingSubjectService ],
+  providers: [
+    BookingSubjectService,
+    BookingSubjectResolver
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
