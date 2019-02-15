@@ -24,4 +24,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  updateBookingSubject($event: any) {
+    this.bookingSubject = $event;
+    this.currentBookingSubject = this.bookingSubject[0];
+  }
+
 }

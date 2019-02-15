@@ -1,8 +1,8 @@
 <header class="header flex-con">
     <img src="../assets/img/logo.png" alt="trillo" class="logo">
-    <form action="#" class="search">
-        <input type="text" class="search__input" placeholder="Search your hotels">
-        <button class="search__button">
+    <form  class="search" (ngSubmit)="onSubmit()" #formControl="ngForm">
+        <input type="text" class="search__input" name="searchParameter" placeholder="Search your hotels by name or location" [(ngModel)]="searchParams.searchParameter">
+        <button class="search__button" type="submit">
          <svg class="search__icon">
              <use xlink:href="../assets/img/sprite.svg#icon-magnifying-glass"></use>
          </svg>
