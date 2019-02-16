@@ -15,7 +15,7 @@
       <app-cta [bookingSubject]="currentBookingSubject"></app-cta>
     </main>
     <main class="hotel-view" *ngIf="isLoginClicked && !isRegisterClicked">
-        <app-login></app-login>
+        <app-login (hideLoginAndRegisterChange)="reset($event)"></app-login>
     </main>
     <main class="hotel-view" *ngIf="!isLoginClicked && isRegisterClicked">
         <app-register></app-register>

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class BookingSubjectService {
 
-  baseUrl = `${environment.apiUrl}/bookings`;
+  private baseUrl = `${environment.apiUrl}/bookings`;
   constructor(private http: HttpClient) { }
 
   getBookingSubjects(bookingType: BookingSubjectType, searchParams?: any): Observable<any[]> {

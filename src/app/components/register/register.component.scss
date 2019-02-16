@@ -30,6 +30,7 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 1.3rem 2rem;
+  position: relative;
 }
 .login-form {
   &__btn {
@@ -62,6 +63,14 @@
   &__label {
     font-size: 1.7rem;
     font-weight: 400;
+   // color: var(--color-primary-light);
+
+  }
+  .error-feedback {
+    font-size: 1.2rem;
+    color: red;
+    position: absolute;
+    top: 7.6rem;
   }
   &__input {
     border-radius: .5rem;

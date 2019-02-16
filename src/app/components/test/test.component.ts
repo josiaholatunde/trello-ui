@@ -2,6 +2,7 @@ import { BookingSubject } from 'src/app/models/booking-subject';
 import { Component, OnInit } from '@angular/core';
 import { BookingSubjectService } from 'src/app/services/booking-subject.service';
 import { BookingSubjectType } from 'src/app/models/booking-subject-type';
+import { AlertifyService } from 'src/app/services/alertify.service';
 
 @Component({
   selector: 'app-test',
@@ -13,7 +14,7 @@ export class TestComponent implements OnInit {
   cars: any[];
   searchParams: string;
   bookingSubjects: BookingSubject[];
-  constructor(private bookingService: BookingSubjectService) {
+  constructor(private bookingService: BookingSubjectService, private alertify: AlertifyService) {
     this.cars = [
       {vin: 'r3278r2', year: 2010, brand: 'Audi', color: 'Black'},
       {vin: 'jhto2g2', year: 2015, brand: 'BMW', color: 'White'},
@@ -39,7 +40,7 @@ export class TestComponent implements OnInit {
     });
   }
   selectCar() {
-
+  this.alertify.success('i work');
   }
 
 }

@@ -74,5 +74,4 @@ export class HomeComponent implements OnInit {
     this.isLoginClicked = false;
     this.isRegisterClicked = false;
   }
-
 }

@@ -22,6 +22,9 @@ import {CarouselModule} from 'primeng/carousel';
 import { LoginRegisterPageComponent } from './components/login-register-page/login-register-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AlertifyService } from './services/alertify.service';
+import { UserService } from './services/user.service';
+import { ErrorInterceptor } from './services/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,10 @@ import { RegisterComponent } from './components/register/register.component';
   ],
   providers: [
     BookingSubjectService,
-    BookingSubjectResolver
+    BookingSubjectResolver,
+    AlertifyService,
+    UserService,
+    ErrorInterceptor
    ],
   bootstrap: [AppComponent]
 })
