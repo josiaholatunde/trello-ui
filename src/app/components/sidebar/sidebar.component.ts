@@ -12,12 +12,14 @@ import { Router } from '@angular/router';
 export class SidebarComponent implements OnInit {
 
   @Output() bookingSubjectChange = new EventEmitter();
+  @Output() isLoggedInAndRegisterChange = new EventEmitter();
   bookingType: BookingSubjectType;
   constructor(private bookingService: BookingSubjectService, private router: Router) { }
 
   ngOnInit() {
   }
   getBookingSubject(bookingType: BookingSubjectType) {
+    this.isLoggedInAndRegisterChange.emit(false);
     this.bookingService.getBookingSubjects(bookingType).subscribe((res: BookingSubject[]) => {
      this.bookingSubjectChange.emit(res);
      this.router.navigate(['bookings', BookingSubjectType[bookingType]]);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { BookingSubjectType } from 'src/app/models/booking-subject-type';
 import { ActivatedRoute } from '@angular/router';
 import { BookingSubjectService } from 'src/app/services/booking-subject.service';
@@ -12,15 +12,13 @@ import { BookingSubject } from 'src/app/models/booking-subject';
 export class HeaderComponent implements OnInit {
 
   searchParams: any = {};
+  @Output() bookingTypeSearchInputChange = new EventEmitter();
   currentBookingType: BookingSubjectType;
   bookingSubjects: BookingSubject[];
+  isLoggedIn = true;
   constructor(private route: ActivatedRoute, private bookingService: BookingSubjectService) { }
 
   ngOnInit() {
-  }
-  onHandleSelect($event: any) {
-    console.log('You clicked');
-    console.log('Event', $event);
   }
   filterBookingSubject(event) {
     const query = event.query;
@@ -30,6 +28,9 @@ export class HeaderComponent implements OnInit {
       this.bookingSubjects = res;
       console.log(res);
     });
+  }
+  getBookingSubjects() {
+    this.bookingTypeSearchInputChange.emit(this.searchParams.name);
   }
 
 }

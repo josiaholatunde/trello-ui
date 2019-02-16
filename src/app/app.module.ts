@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ButtonModule} from 'primeng/button';
 
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -18,6 +19,9 @@ import { BookingSubjectResolver } from './resolvers/booking-subject.resolver';
 import { HomeComponent } from './components/home/home.component';
 import { TestComponent } from './components/test/test.component';
 import {CarouselModule} from 'primeng/carousel';
+import { LoginRegisterPageComponent } from './components/login-register-page/login-register-page.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,10 @@ import {CarouselModule} from 'primeng/carousel';
     CtaComponent,
     HeaderComponent,
     HomeComponent,
-    TestComponent
+    TestComponent,
+    LoginRegisterPageComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,8 @@ import {CarouselModule} from 'primeng/carousel';
     AppRouterModule,
     CarouselModule,
     AutoCompleteModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ButtonModule
   ],
   providers: [
     BookingSubjectService,

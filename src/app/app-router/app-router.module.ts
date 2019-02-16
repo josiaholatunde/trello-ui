@@ -19,6 +19,16 @@ const routes: Routes = [
     resolve: [ BookingSubjectResolver ]
   },
   {
+    path: 'login',
+    component: HomeComponent,
+    resolve: [ BookingSubjectResolver ]
+  },
+  {
+    path: 'register',
+    component: HomeComponent,
+    resolve: [ BookingSubjectResolver ]
+  },
+  {
     path: 'test',
     component: TestComponent
    // resolve: [ BookingSubjectResolver ]

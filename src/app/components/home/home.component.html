@@ -1,18 +1,24 @@
 <div class="container">
 
-  <app-header></app-header>
+  <app-header (bookingTypeSearchInputChange)="getBookingSubject($event)"></app-header>
 
   <div class="content">
 
     <nav class="sidebar">
-      <app-sidebar (bookingSubjectChange)="updateBookingSubject($event)"></app-sidebar>
+      <app-sidebar (bookingSubjectChange)="updateBookingSubject($event)" (isLoggedInAndRegisterChange)="reset($event)"></app-sidebar>
     </nav>
 
-    <main class="hotel-view">
+    <main class="hotel-view" *ngIf="!isLoginClicked && !isRegisterClicked">
       <app-gallery></app-gallery>
       <app-overview *ngIf="currentBookingSubject" [bookingSubject]="currentBookingSubject"></app-overview>
-      <app-detail *ngIf="currentBookingSubject && bookingSubject" (bookingSubjectChange)="updateIndividualBookingSubject($event)"  [bookingSubject]="currentBookingSubject"  [allBooking]="bookingSubject"></app-detail>
+      <app-detail *ngIf="currentBookingSubject && bookingSubject" (bookingSubjectChange)="updateIndividualBookingSubject($event)"  [bookingSubject]="currentBookingSubject"  [allBooking]="bookingSubject" ></app-detail>
       <app-cta [bookingSubject]="currentBookingSubject"></app-cta>
+    </main>
+    <main class="hotel-view" *ngIf="isLoginClicked && !isRegisterClicked">
+        <app-login></app-login>
+    </main>
+    <main class="hotel-view" *ngIf="!isLoginClicked && isRegisterClicked">
+        <app-register></app-register>
     </main>
 
   </div>

@@ -1,6 +1,6 @@
 <div class="detail">
-    <div class="arrow-nav-left">
-        <i class="fa fa-angle-left fa-3x" (click)="loadPrevBookingSubject()"></i>
+    <div class="arrow-nav-left" [ngClass]="{'greyButton': greyLeftButton}">
+        <i class="fa fa-angle-left fa-4x" (click)="loadPrevBookingSubject()"></i>
     </div>
     <div class="description">
         <p class="paragraph">
@@ -42,6 +42,6 @@
          <button class="btn-inline overview__btn">Show All<span>&rarr;</span></button>
     </div>
     <div class="arrow-nav-right" [ngClass]="{'greyButton': greyRightButton}">
-      <i class="fa fa-angle-right arrow-style fa-3x" (click)="loadNextBookingSubject()"></i>
+      <i class="fa fa-angle-right arrow-style fa-4x" (click)="loadNextBookingSubject()"></i>
     </div>
 </div>

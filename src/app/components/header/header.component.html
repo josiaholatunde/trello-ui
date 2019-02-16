@@ -1,6 +1,6 @@
 <header class="header flex-con">
     <img src="../assets/img/logo.png" alt="trillo" class="logo">
-    <form  class="search">
+    <form  class="search" (ngSubmit)="getBookingSubjects()" #searchFormControl="ngForm" >
         <p-autoComplete [(ngModel)]="searchParams"
             name="searchParams"
             [suggestions]="bookingSubjects"
@@ -10,7 +10,6 @@
             [size]="44"
             placeholder="Search your hotels by Name, City or Location"
             [minLength]="1"
-            (onselect)="onHandleSelect($event)"
             >
         </p-autoComplete>
         <button class="search__button" type="submit">
@@ -19,7 +18,7 @@
          </svg>
         </button>
      </form>
-     <nav class="user-nav">
+     <nav class="user-nav" *ngIf="!isLoggedIn">
          <div class="user-nav__icon-box">
              <svg class="user-nav__icon">
                  <use xlink:href="../assets/img/sprite.svg#icon-bookmark"></use>
@@ -37,4 +36,16 @@
              <span class="user-nav__user-name">Olatunde</span>
          </div>
      </nav>
+     <nav class="user-nav" *ngIf="isLoggedIn">
+        <div class="user-nav__icon-box">
+            <a [routerLink]="['/login']" class="user-nav__auth">
+              Login
+            </a>
+        </div>
+        <div class="user-nav__icon-box">
+            <a [routerLink]="['/register']" class="user-nav__auth">
+              Register
+            </a>
+        </div>
+    </nav>
   </header>

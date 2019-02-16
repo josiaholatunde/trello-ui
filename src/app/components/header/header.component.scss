@@ -44,17 +44,20 @@
   &__icon {
       height: 2rem;
       width: 2rem;
+      &:active {
+        outline: none;
+      }
   }
   &__button {
       border: none;
       cursor: pointer;
       position: absolute;
-      left: 34rem;
+      left: 35rem;
       background: var(--dark-grey-2);
-     /*  &:active {
+      &:active {
           outline: none;
           transform: translateY(2px);
-      } */
+      }
 
   }
 }
@@ -109,8 +112,9 @@
       top: 1.8rem;
       left: 1.5rem;
   }
-  &__user {
-
+  &__auth {
+    color: var(--color-primary);
+    text-transform: uppercase;
   }
 }
 

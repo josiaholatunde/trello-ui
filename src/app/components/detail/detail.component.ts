@@ -17,7 +17,7 @@ export class DetailComponent implements OnInit {
   nameOfRecommender: string;
   bookingType: string;
   greyRightButton = false;
-  greyLeftButton = false;
+  greyLeftButton = true;
 
   constructor() {
     this.bookingComments = [];
@@ -43,24 +43,36 @@ export class DetailComponent implements OnInit {
     return Math.floor(Math.random() * (maxValue - minValue) + minValue);
   }
   loadNextBookingSubject() {
-    const idOfCurrentBookingSubject = this.bookingSubject.id;
-    console.log('Next 1', typeof(this.bookingSubject.id), typeof(idOfCurrentBookingSubject));
-    if (idOfCurrentBookingSubject === this.allBooking.length) {
+    let idOfCurrentBookingSubject = this.bookingSubject.id;
+    idOfCurrentBookingSubject += 1;
+    if (idOfCurrentBookingSubject >= this.allBooking.length) {
+      this.updatePageWithNextBookingSubject();
       this.greyRightButton = true;
+      this.greyLeftButton = false;
+    } else {
+        this.updatePageWithNextBookingSubject();
     }
-    const next = idOfCurrentBookingSubject;
-    this.bookingSubject = this.allBooking[next];
+  }
+  updatePageWithNextBookingSubject() {
+    this.bookingSubject = this.allBooking[this.allBooking.length - 1];
     this.bookingSubjectChange.emit(this.bookingSubject);
   }
   loadPrevBookingSubject() {
     if (this.greyRightButton === true) {
       this.greyLeftButton = false;
     }
-    const idOfCurrentBookingSubject = this.bookingSubject.id;
-    if (idOfCurrentBookingSubject === 1) {
-      this.greyRightButton = true;
+    let idOfCurrentBookingSubject = this.bookingSubject.id;
+    idOfCurrentBookingSubject -= 1;
+    if (idOfCurrentBookingSubject <= 1) {
+      idOfCurrentBookingSubject = 0;
+      this.greyLeftButton = true;
+      this.greyRightButton = false;
+      this.bookingSubject = this.allBooking[idOfCurrentBookingSubject];
+      this.bookingSubjectChange.emit(this.bookingSubject);
+    } else {
+      this.bookingSubject = this.allBooking[idOfCurrentBookingSubject];
+      this.bookingSubjectChange.emit(this.bookingSubject);
     }
-    this.bookingSubject = this.allBooking[idOfCurrentBookingSubject];
   }
 
 }
