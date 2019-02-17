@@ -18,7 +18,7 @@
          </svg>
         </button>
      </form>
-     <nav class="user-nav" *ngIf="!isLoggedIn">
+     <nav class="user-nav" *ngIf="isLoggedIn">
          <div class="user-nav__icon-box">
              <svg class="user-nav__icon">
                  <use xlink:href="../assets/img/sprite.svg#icon-bookmark"></use>
@@ -33,10 +33,13 @@
          </div>
          <div class="user-nav__user">
              <img src="../assets/img/user.jpg" alt="User photo" class="user-nav__user-photo">
-             <span class="user-nav__user-name">Olatunde</span>
+             <span class="user-nav__user-name">{{loggedInUser.userName}}</span>
          </div>
+         <div class="user-nav__user">
+           <span class="user-nav__user-name" (click)="logout()">Logout</span>
+        </div>
      </nav>
-     <nav class="user-nav" *ngIf="isLoggedIn">
+     <nav class="user-nav" *ngIf="!isLoggedIn">
         <div class="user-nav__icon-box">
             <a [routerLink]="['/login']" class="user-nav__auth">
               Login

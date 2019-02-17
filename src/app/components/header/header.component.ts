@@ -1,6 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, OnChanges } from '@angular/core';
 import { BookingSubjectType } from 'src/app/models/booking-subject-type';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookingSubjectService } from 'src/app/services/booking-subject.service';
 import { BookingSubject } from 'src/app/models/booking-subject';
 
@@ -10,16 +10,31 @@ import { BookingSubject } from 'src/app/models/booking-subject';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
   searchParams: any = {};
   @Output() bookingTypeSearchInputChange = new EventEmitter();
+  @Input() isLoggedInStatusProperty;
+  @Input() propertyToPassOn: any;
   currentBookingType: BookingSubjectType;
   bookingSubjects: BookingSubject[];
-  isLoggedIn = true;
-  constructor(private route: ActivatedRoute, private bookingService: BookingSubjectService) { }
+  isLoggedIn = false;
+  loggedInUser: any;
+  constructor(private route: ActivatedRoute, private router: Router, private bookingService: BookingSubjectService) { }
 
   ngOnInit() {
+  /*   this.route.paramMap.subscribe(param => {
+      if (param['status']) {
+        this.isLoggedIn = true;
+        console.log('ogo', param['status']);
+      }
+      console.log('I didnt run', param['status']);
+    }); */
+    if (this.router.url.endsWith('true')) {
+      this.isLoggedIn = true;
+      const user = JSON.parse(localStorage.getItem('user'));
+      this.loggedInUser = user;
+    }
   }
+
   filterBookingSubject(event) {
     const query = event.query;
     // type from route params
@@ -31,6 +46,11 @@ export class HeaderComponent implements OnInit {
   }
   getBookingSubjects() {
     this.bookingTypeSearchInputChange.emit(this.searchParams.name);
+  }
+  logout() {
+    this.isLoggedIn = false;
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
 
 }

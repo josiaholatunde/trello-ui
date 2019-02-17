@@ -18,6 +18,10 @@
   cursor: pointer;
 }
 
+.btn-review {
+  margin-left: 1rem;
+}
+
 
 .arrow-nav-left {
   position: absolute;
@@ -196,6 +200,7 @@
 
   &:focus {
       animation: pulsate 1s infinite;
+      outline: none;
   }
 }
 @keyframes pulsate {

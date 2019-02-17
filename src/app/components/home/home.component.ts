@@ -11,6 +11,8 @@ import { BookingSubject } from '../../models/booking-subject';
 })
 export class HomeComponent implements OnInit {
 
+  isLoggedInStatus = false;
+  passOn: any;
   bookingType = BookingSubjectType.Hotel;
   bookingSubject: BookingSubject[];
   currentBookingSubject: BookingSubject;
@@ -73,5 +75,14 @@ export class HomeComponent implements OnInit {
   reset($event) {
     this.isLoginClicked = false;
     this.isRegisterClicked = false;
+  }
+  update ($event) {
+    this.isLoginClicked = false;
+    this.isRegisterClicked = false;
+    this.isLoggedInStatus = true;
+    console.log(' I came', this.isLoggedInStatus);
+  }
+  log($event) {
+    this.passOn = $event;
   }
 }

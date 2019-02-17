@@ -24,6 +24,9 @@
           justify-content: center;
       }
   }
+  &__item:active {
+    background: var(--color-primary-light);
+  }
   &__item:hover::before {
       width: 100%;
       transform: scaleY(1);
@@ -56,6 +59,7 @@
       display: flex;
       align-items: center;
   }
+
   &__text {
       color: #fff;
   }

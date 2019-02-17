@@ -1,6 +1,8 @@
 <div class="container">
 
-  <app-header (bookingTypeSearchInputChange)="getBookingSubject($event)"></app-header>
+  <app-header (bookingTypeSearchInputChange)="getBookingSubject($event)" [propertyToPassOn]= "passOn"
+  [isLoggedInStatusProperty]="isLoggedInStatus">
+  </app-header>
 
   <div class="content">
 
@@ -15,7 +17,7 @@
       <app-cta [bookingSubject]="currentBookingSubject"></app-cta>
     </main>
     <main class="hotel-view" *ngIf="isLoginClicked && !isRegisterClicked">
-        <app-login (hideLoginAndRegisterChange)="reset($event)"></app-login>
+        <app-login (hideLoginAndRegisterChange)="update($event)" (crapChange)="log($event)"></app-login>
     </main>
     <main class="hotel-view" *ngIf="!isLoginClicked && isRegisterClicked">
         <app-register></app-register>

@@ -74,5 +74,8 @@ export class DetailComponent implements OnInit {
       this.bookingSubjectChange.emit(this.bookingSubject);
     }
   }
-
+  isUserLoggedIn() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return !!user;
+  }
 }

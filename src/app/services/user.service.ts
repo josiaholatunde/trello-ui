@@ -24,7 +24,9 @@ export class UserService {
    return this.http.post<any[]>(`${this.baseUrl}/login`, userForLoginDto, httpOptions).pipe(
      map((res: any) => {
         const token = JSON.stringify(res.token);
+        const user = JSON.stringify(res.user);
         localStorage.setItem('token', token);
+        localStorage.setItem('user', user);
         return res.user;
      })
    );

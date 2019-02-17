@@ -8,12 +8,13 @@
           <label class="login-form__label">Username</label>
           <input type="text" class="login-form__input" name="username" #userNameControl="ngModel" required [(ngModel)]="userForLogin.username">
           <span class="error-feedback" *ngIf="userNameControl.invalid && userNameControl.touched">
-              Firstname field is required
+              Username field is required
             </span>
         </div>
         <div class="form-group animation-group">
             <label class="login-form__label">Password</label>
-            <input type="password" name="password" #passwordControl="ngModel" required [(ngModel)]="userForLogin.username"
+            <input type="password" name="password" #passwordControl="ngModel" required
+            [(ngModel)]="userForLogin.password"
             class="login-form__input">
             <span class="error-feedback" *ngIf="passwordControl.invalid && passwordControl.touched">
                 Firstname field is required

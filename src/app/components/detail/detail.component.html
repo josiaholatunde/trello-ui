@@ -40,6 +40,9 @@
             </figcaption>
         </figure>
          <button class="btn-inline overview__btn">Show All<span>&rarr;</span></button>
+         <button class="btn-inline overview__btn btn-review" *ngIf="isUserLoggedIn()">Add Review
+           <i class="fa fa-pencil"></i>
+         </button>
     </div>
     <div class="arrow-nav-right" [ngClass]="{'greyButton': greyRightButton}">
       <i class="fa fa-angle-right arrow-style fa-4x" (click)="loadNextBookingSubject()"></i>
