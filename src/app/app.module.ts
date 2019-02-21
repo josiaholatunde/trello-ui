@@ -1,10 +1,11 @@
 import { AppRouterModule } from './app-router/app-router.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ButtonModule} from 'primeng/button';
+import {DialogModule} from 'primeng/dialog';
 
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -25,6 +26,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { AlertifyService } from './services/alertify.service';
 import { UserService } from './services/user.service';
 import { ErrorInterceptor } from './services/error.interceptor';
+import { CreateBookingComponent } from './components/create-booking/create-booking.component';
+import { UserCommentComponent } from './components/user-comment/user-comment.component';
+import { TestHeaderComponent } from './components/test-header/test-header.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,10 @@ import { ErrorInterceptor } from './services/error.interceptor';
     TestComponent,
     LoginRegisterPageComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CreateBookingComponent,
+    UserCommentComponent,
+    TestHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +56,9 @@ import { ErrorInterceptor } from './services/error.interceptor';
     CarouselModule,
     AutoCompleteModule,
     BrowserAnimationsModule,
-    ButtonModule
+    ButtonModule,
+    DialogModule,
+    ReactiveFormsModule
   ],
   providers: [
     BookingSubjectService,

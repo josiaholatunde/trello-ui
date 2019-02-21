@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
@@ -15,7 +15,13 @@ const httpOptions = {
 export class UserService {
 
   private baseUrl = `${environment.apiUrl}/auth`;
+  defaultLoggedInStatus = new BehaviorSubject(false);
+  loggedInStatus = this.defaultLoggedInStatus.asObservable();
   constructor(private http: HttpClient) { }
+
+  changeLoggedInStatus(status: boolean) {
+    this.defaultLoggedInStatus.next(status);
+  }
 
   registerUser(userFoRegisterationDto: any): Observable<any[]> {
    return this.http.post<any[]>(`${this.baseUrl}/register`, userFoRegisterationDto, httpOptions).pipe();
@@ -25,10 +31,20 @@ export class UserService {
      map((res: any) => {
         const token = JSON.stringify(res.token);
         const user = JSON.stringify(res.user);
+        this.changeLoggedInStatus(true);
         localStorage.setItem('token', token);
         localStorage.setItem('user', user);
         return res.user;
      })
    );
+  }
+
+  getLoggedInUser() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user;
+  }
+  isUserLoggedIn() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return !!user;
   }
 }

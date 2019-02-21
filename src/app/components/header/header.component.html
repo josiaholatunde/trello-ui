@@ -8,7 +8,7 @@
             (completeMethod)="filterBookingSubject($event)"
             field="name"
             [size]="44"
-            placeholder="Search your hotels by Name, City or Location"
+            placeholder="Search your {{routePath}} by Name, City or Location"
             [minLength]="1"
             >
         </p-autoComplete>
@@ -33,7 +33,7 @@
          </div>
          <div class="user-nav__user">
              <img src="../assets/img/user.jpg" alt="User photo" class="user-nav__user-photo">
-             <span class="user-nav__user-name">{{loggedInUser.userName}}</span>
+             <span class="user-nav__user-name">{{ loggedInUser.userName | titlecase }}</span>
          </div>
          <div class="user-nav__user">
            <span class="user-nav__user-name" (click)="logout()">Logout</span>
@@ -52,3 +52,5 @@
         </div>
     </nav>
   </header>
+
+

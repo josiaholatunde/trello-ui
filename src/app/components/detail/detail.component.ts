@@ -18,6 +18,7 @@ export class DetailComponent implements OnInit {
   bookingType: string;
   greyRightButton = false;
   greyLeftButton = true;
+  display = false;
 
   constructor() {
     this.bookingComments = [];
@@ -77,5 +78,8 @@ export class DetailComponent implements OnInit {
   isUserLoggedIn() {
     const user = JSON.parse(localStorage.getItem('user'));
     return !!user;
+  }
+  showDialog() {
+    this.display = true;
   }
 }

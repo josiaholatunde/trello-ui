@@ -1,22 +1,5 @@
-
-<p-carousel headerText="Cars" [value]="cars">
-    <ng-template let-car pTemplate="item">
-        <div class="ui-grid ui-grid-responsive">
-                <img src="../../../assets/img/hotel-1.jpg"  class="gallery__photo">
-        </div>
-    </ng-template>
-</p-carousel>
-
-
-<p-autoComplete [(ngModel)]="searchParams"
-[suggestions]="bookingSubjects"
-(completeMethod)="filterCountrySingle($event)"
-field="name"
-[size]="30"
-placeholder="Search by hotel name or location"
-[minLength]="1">
-</p-autoComplete>
-
-
-<button pButton type="button" label="Click Me"  (click)="selectCar()"></button>
-<p-button label="Click" ></p-button>
+<div class="container">
+  <div *ngFor="let c of bookingSubjects">
+      {{c.city}}
+  </div>
+</div>

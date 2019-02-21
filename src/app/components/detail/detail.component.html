@@ -40,7 +40,7 @@
             </figcaption>
         </figure>
          <button class="btn-inline overview__btn">Show All<span>&rarr;</span></button>
-         <button class="btn-inline overview__btn btn-review" *ngIf="isUserLoggedIn()">Add Review
+         <button class="btn-inline overview__btn btn-review" *ngIf="isUserLoggedIn()" (click)="showDialog()">Add Review
            <i class="fa fa-pencil"></i>
          </button>
     </div>
@@ -48,3 +48,4 @@
       <i class="fa fa-angle-right arrow-style fa-4x" (click)="loadNextBookingSubject()"></i>
     </div>
 </div>
+<app-user-comment [passDisplay]="display"></app-user-comment>

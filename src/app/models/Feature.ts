@@ -3,3 +3,4 @@ export interface Feature {
   title: string;
   bookingSubjectId: number;
 }
+

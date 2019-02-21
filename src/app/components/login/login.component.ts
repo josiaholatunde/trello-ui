@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
       this.loginFormControl.reset();
       this.hideLoginAndRegisterChange.emit(false);
       this.crapChange.emit('adeolu');
+      console.log('User', res);
     }, err => this.alertify.error(err),
     () => {
       this.router.navigate(['bookings/Hotel', 'true']);

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookingSubjectService } from 'src/app/services/booking-subject.service';
 import { BookingSubjectType } from 'src/app/models/booking-subject-type';
 import { AlertifyService } from 'src/app/services/alertify.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-test',
@@ -14,21 +15,19 @@ export class TestComponent implements OnInit {
   cars: any[];
   searchParams: string;
   bookingSubjects: BookingSubject[];
-  constructor(private bookingService: BookingSubjectService, private alertify: AlertifyService) {
-    this.cars = [
-      {vin: 'r3278r2', year: 2010, brand: 'Audi', color: 'Black'},
-      {vin: 'jhto2g2', year: 2015, brand: 'BMW', color: 'White'},
-      {vin: 'h453w54', year: 2012, brand: 'Honda', color: 'Blue'},
-      {vin: 'g43gwwg', year: 1998, brand: 'Renault', color: 'White'},
-      {vin: 'gf45wg5', year: 2011, brand: 'VW', color: 'Red'},
-      {vin: 'bhv5y5w', year: 2015, brand: 'Jaguar', color: 'Blue'},
-      {vin: 'ybw5fsd', year: 2012, brand: 'Ford', color: 'Yellow'},
-      {vin: '45665e5', year: 2011, brand: 'Mercedes', color: 'Brown'},
-      {vin: 'he6sb5v', year: 2015, brand: 'Ford', color: 'Black'}
-  ];
+  bookingType: any;
+  currentBookingSubject: BookingSubject;
+  constructor(private bookingService: BookingSubjectService, private alertify: AlertifyService,
+    private route: ActivatedRoute) {
+    this.route.url.subscribe(res => {
+      console.log('I changed', res[1].path);
+      this.bookingType = BookingSubjectType[res[1].path];
+    });
    }
 
   ngOnInit() {
+    this.loadBookingSubjects();
+
   }
   filterCountrySingle(event) {
     const query = event.query;
@@ -42,5 +41,15 @@ export class TestComponent implements OnInit {
   selectCar() {
   this.alertify.success('i work');
   }
+
+  loadBookingSubjects($event?: any) {
+    // const test = this.getBookingTypeFromRoute();
+     console.log('Typeee', this.bookingType);
+     this.bookingService.getBookingSubjects(this.bookingType, $event).subscribe((res: BookingSubject[]) => {
+       this.bookingSubjects = res;
+       console.log('Res', res);
+       this.currentBookingSubject = res[0];
+     });
+   }
 
 }
