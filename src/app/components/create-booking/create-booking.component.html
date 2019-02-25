@@ -61,10 +61,10 @@
   </div>
   <div class="form-group animation-group">
       <label class="login-form__label">Features</label>
-      <textarea  class="login-form__textarea" formControlName="features" rows="5">
+      <textarea  class="login-form__textarea" formControlName="bookingFeatures" rows="5">
       </textarea>
-      <span class="error-feedback-textarea" *ngIf="createBookingGroup.get('features').hasError('required') &&
-      createBookingGroup.get('features').touched">
+      <span class="error-feedback-textarea" *ngIf="createBookingGroup.get('bookingFeatures').hasError('required') &&
+      createBookingGroup.get('bookingFeatures').touched">
           Features field is required
       </span>
   </div>

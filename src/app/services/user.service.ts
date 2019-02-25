@@ -17,10 +17,16 @@ export class UserService {
   private baseUrl = `${environment.apiUrl}/auth`;
   defaultLoggedInStatus = new BehaviorSubject(false);
   loggedInStatus = this.defaultLoggedInStatus.asObservable();
+  defaultPhotoUrl = new BehaviorSubject('../../assets/img/user.png');
+  defPhoto = '../../assets/img/user.png';
+  defaultPhotoUrlObservable = this.defaultPhotoUrl.asObservable();
   constructor(private http: HttpClient) { }
 
   changeLoggedInStatus(status: boolean) {
     this.defaultLoggedInStatus.next(status);
+  }
+  changeDefaultPhoto(url: string) {
+    this.defaultPhotoUrl.next(url);
   }
 
   registerUser(userFoRegisterationDto: any): Observable<any[]> {
@@ -29,7 +35,7 @@ export class UserService {
   loginUser(userForLoginDto: any): Observable<any[]> {
    return this.http.post<any[]>(`${this.baseUrl}/login`, userForLoginDto, httpOptions).pipe(
      map((res: any) => {
-        const token = JSON.stringify(res.token);
+        const token = res.token;
         const user = JSON.stringify(res.user);
         this.changeLoggedInStatus(true);
         localStorage.setItem('token', token);

@@ -8,7 +8,7 @@
             (completeMethod)="filterBookingSubject($event)"
             field="name"
             [size]="44"
-            placeholder="Search your {{routePath}} by Name, City or Location"
+            placeholder="Search your {{ bookingType }} by Name, City or Location"
             [minLength]="1"
             >
         </p-autoComplete>
@@ -32,8 +32,11 @@
              <span class="user-nav__notification">7</span>
          </div>
          <div class="user-nav__user">
-             <img src="../assets/img/user.jpg" alt="User photo" class="user-nav__user-photo">
+             <img [src]="loggedInUser.url || defaultPhotoUrl" alt="User photo" class="user-nav__user-photo">
              <span class="user-nav__user-name">{{ loggedInUser.userName | titlecase }}</span>
+             <div class="dropdown-content">
+               <a [routerLink]="['/photo/upload']" class="dropdown-item">Upload Photo</a>
+             </div>
          </div>
          <div class="user-nav__user">
            <span class="user-nav__user-name" (click)="logout()">Logout</span>

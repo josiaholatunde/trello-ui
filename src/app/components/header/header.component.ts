@@ -29,18 +29,9 @@ export class HeaderComponent implements OnInit {
   type: any;
   testProps: string;
   routePath: string;
+  defaultPhotoUrl: string;
   constructor(private route: ActivatedRoute, private router: Router, private bookingService: BookingSubjectService,
     private alertifyService: AlertifyService, private userService: UserService) {
-    this.route.params.subscribe(param => {
-      if (param['name']) {
-        this.paramName = param['name'];
-      }
-     });
-     this.route.url.subscribe(res => {
-       console.log('I changed', res[1].path);
-       this.routePath = res[1].path;
-     });
-     console.log('constructor ran');
    }
 
   getBookingSubject(bookingType: any) {
@@ -51,6 +42,33 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.bookingService.defaultBookingTypeObservable.subscribe(type => {
+      this.bookingType = BookingSubjectType[type];
+    });
+    this.userService.defaultPhotoUrlObservable.subscribe(ph => this.defaultPhotoUrl = ph);
+
+    this.setBookingType();
+    this.getBookingSubject(this.bookingType);
+    this.userService.defaultLoggedInStatus.subscribe(status => {
+      this.loggedInUser = this.userService.getLoggedInUser();
+      this.isLoggedIn = status;
+    });
+
+    this.route.paramMap.subscribe(param => {
+      if (param['status']) {
+        this.isLoggedIn = true;
+        console.log('ogo', param['status']);
+      }
+      console.log('I didnt run', param['status']);
+    });
+    if (this.router.url.endsWith('true')) {
+        this.isLoggedIn = true;
+        const user = JSON.parse(localStorage.getItem('user'));
+        this.loggedInUser = user;
+      }
+      console.log('I executed');
+  }
+  setBookingType(): any {
     if (this.paramName === 'Hotel') {
       this.bookingType = BookingSubjectType[BookingSubjectType.Hotel];
     } else  if (this.paramName === 'CarRental') {
@@ -62,27 +80,6 @@ export class HeaderComponent implements OnInit {
     } else {
       this.bookingType = BookingSubjectType[BookingSubjectType.Hotel];
     }
-
-    this.getBookingSubject(this.bookingType);
-
-    if (this.userService.isUserLoggedIn()) {
-      this.loggedInUser = this.userService.getLoggedInUser();
-      this.isLoggedIn = true;
-    }
-    this.route.paramMap.subscribe(param => {
-      if (param['status']) {
-        this.isLoggedIn = true;
-        console.log('ogo', param['status']);
-      }
-      console.log('I didnt run', param['status']);
-    });
-    console.log('Brochet');
-    if (this.router.url.endsWith('true')) {
-        this.isLoggedIn = true;
-        const user = JSON.parse(localStorage.getItem('user'));
-        this.loggedInUser = user;
-      }
-      console.log('I executed');
   }
 
   filterBookingSubject(event) {
@@ -102,6 +99,9 @@ export class HeaderComponent implements OnInit {
     this.userService.changeLoggedInStatus(false);
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+  }
+  getDefaultPhoto() {
+    return this.userService.defPhoto;
   }
 
 }

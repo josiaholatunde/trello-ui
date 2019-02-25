@@ -30,7 +30,7 @@ export class CreateBookingComponent implements OnInit {
       name: ['', Validators.required],
       mainDescription: ['', [Validators.required, Validators.minLength(272), Validators.maxLength(276)]],
       subDescription: ['', [Validators.required, Validators.minLength(272), Validators.maxLength(276)]],
-      features: ['', Validators.required],
+      bookingFeatures: ['', Validators.required],
       noOfBookingSubjectsLeft: ['', Validators.required],
       city: ['', Validators.required],
       country: ['', Validators.required],
@@ -45,12 +45,13 @@ export class CreateBookingComponent implements OnInit {
      const description: any = {};
      location.city = this.createBookingGroup.value.city;
      location.country = this.createBookingGroup.value.city;
+    const userId = this.getLoggedInUserId();
+     const features: string[] = this.createBookingGroup.value.bookingFeatures.split(',');
      description.mainDescription = this.createBookingGroup.value.mainDescription;
      description.subDescription = this.createBookingGroup.value.subDescription;
      location.country = this.createBookingGroup.value.city;
-     this.createBookingGroup.value.features = this.createBookingGroup.value.features.split(',');
      const noOfVoters = 0;
-    const creatingBookingVm = { ...this.createBookingGroup.value, location, description, noOfVoters };
+    const creatingBookingVm = { ...this.createBookingGroup.value, location, description, noOfVoters, features, userId };
     this.bookingService.createBooking(creatingBookingVm).subscribe(res => {
       this.alertify.success('Successfully created booking');
     }, err => {
@@ -59,5 +60,9 @@ export class CreateBookingComponent implements OnInit {
       this.createBookingGroup.reset();
     });
    }
+  }
+  getLoggedInUserId(): number {
+    const id = JSON.parse(localStorage.getItem('user')).id;
+    return id;
   }
 }

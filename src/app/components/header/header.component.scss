@@ -44,7 +44,7 @@
   &__icon {
       height: 2rem;
       width: 2rem;
-      &:active {
+      &:active, &:focus {
         outline: none;
       }
   }
@@ -54,7 +54,7 @@
       position: absolute;
       left: 35rem;
       background: var(--dark-grey-2);
-      &:active {
+      &:active, &:focus {
           outline: none;
           transform: translateY(2px);
       }
@@ -67,6 +67,7 @@
   align-self: stretch;
   display: flex;
   align-items: center;
+  position: relative;
   & > * {
       margin: 0 1.6rem;
       cursor: pointer;
@@ -76,6 +77,7 @@
       align-items: center;
 
   }
+
   & > *:hover {
       background: var(--grey-dark-2);
   }
@@ -121,3 +123,22 @@
 .ui-autocomplete-list-item {
   list-style: none;
 }
+.user-nav__user:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content{
+  display: none;
+  position: absolute;
+  top: 6.8rem;
+  background: var(--color-primary);
+  min-width: 6rem;
+  box-shadow: 0 .8rem 1.6rem rgba(0, 0, 0, .2);
+  z-index: 1;
+  & a{
+    color: white;
+    padding: 1.2rem 1.6rem;
+    display: block;
+  }
+}
+

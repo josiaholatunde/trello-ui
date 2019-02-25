@@ -6,6 +6,10 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ButtonModule} from 'primeng/button';
 import {DialogModule} from 'primeng/dialog';
+import { JwtModule } from '@auth0/angular-jwt';
+import {TabViewModule} from 'primeng/tabview';
+import { FileUploadModule } from 'ng2-file-upload';
+
 
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -29,6 +33,14 @@ import { ErrorInterceptor } from './services/error.interceptor';
 import { CreateBookingComponent } from './components/create-booking/create-booking.component';
 import { UserCommentComponent } from './components/user-comment/user-comment.component';
 import { TestHeaderComponent } from './components/test-header/test-header.component';
+import { MyBookingsComponent } from './components/my-bookings/my-bookings.component';
+import { BookingEditComponent } from './components/booking-edit/booking-edit.component';
+import { PhotoUploadComponent } from './components/photo-upload/photo-upload.component';
+
+
+const tokenGetter = () => localStorage.getItem('token');
+
+
 
 @NgModule({
   declarations: [
@@ -46,7 +58,10 @@ import { TestHeaderComponent } from './components/test-header/test-header.compon
     RegisterComponent,
     CreateBookingComponent,
     UserCommentComponent,
-    TestHeaderComponent
+    TestHeaderComponent,
+    MyBookingsComponent,
+    BookingEditComponent,
+    PhotoUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +73,16 @@ import { TestHeaderComponent } from './components/test-header/test-header.compon
     BrowserAnimationsModule,
     ButtonModule,
     DialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TabViewModule,
+    FileUploadModule,
+    JwtModule.forRoot({
+     config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:5000'],
+        blacklistedRoutes: ['localhost:5000/api/auth']
+      }
+    })
   ],
   providers: [
     BookingSubjectService,

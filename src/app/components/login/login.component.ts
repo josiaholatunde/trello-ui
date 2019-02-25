@@ -13,7 +13,6 @@ export class LoginComponent implements OnInit {
 @ViewChild('loginFormControl') loginFormControl: NgForm;
   userForLogin: any = {};
   @Output() hideLoginAndRegisterChange = new EventEmitter();
-  @Output() crapChange = new EventEmitter();
   constructor(private userService: UserService, private alertify: AlertifyService, private router: Router) { }
 
   ngOnInit() {
@@ -23,11 +22,10 @@ export class LoginComponent implements OnInit {
       this.alertify.success('Login was successful');
       this.loginFormControl.reset();
       this.hideLoginAndRegisterChange.emit(false);
-      this.crapChange.emit('adeolu');
-      console.log('User', res);
     }, err => this.alertify.error(err),
     () => {
       this.router.navigate(['bookings/Hotel', 'true']);
+      this.userService.changeLoggedInStatus(true);
     });
   }
 

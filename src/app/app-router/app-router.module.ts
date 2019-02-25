@@ -5,12 +5,27 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { BookingSubjectResolver } from '../resolvers/booking-subject.resolver';
 import { HomeComponent } from '../components/home/home.component';
+import { LoginComponent } from '../components/login/login.component';
+import { RegisterComponent } from '../components/register/register.component';
+import { MyBookingsComponent } from '../components/my-bookings/my-bookings.component';
+import { BookingEditComponent } from '../components/booking-edit/booking-edit.component';
+import { PhotoUploadComponent } from '../components/photo-upload/photo-upload.component';
 
 
 const routes: Routes = [
   {
+    path: 'bookings/edit/:id',
+    component: BookingEditComponent,
+    // resolve: [ BookingSubjectResolver ]
+  },
+  {
     path: 'bookings/:name',
     component: HomeComponent,
+    // resolve: [ BookingSubjectResolver ]
+  },
+  {
+    path: 'photo/upload',
+    component: PhotoUploadComponent,
     // resolve: [ BookingSubjectResolver ]
   },
   {
@@ -24,14 +39,19 @@ const routes: Routes = [
     resolve: [ BookingSubjectResolver ]
   },
   {
+    path: 'my-bookings',
+    component: MyBookingsComponent,
+   // resolve: [ BookingSubjectResolver ]
+  },
+  {
     path: 'login',
-    component: HomeComponent,
-    resolve: [ BookingSubjectResolver ]
+    component: LoginComponent,
+    // resolve: [ BookingSubjectResolver ]
   },
   {
     path: 'register',
-    component: HomeComponent,
-    resolve: [ BookingSubjectResolver ]
+    component: RegisterComponent,
+    // resolve: [ BookingSubjectResolver ]
   },
   {
     path: 'test',
