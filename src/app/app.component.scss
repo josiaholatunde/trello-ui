@@ -22,6 +22,9 @@
   background: var(--grey-dark);
   flex: 0 0 18%;
   min-height: 53rem;
+  @media only screen and (max-width: 46rem) {
+    min-height: 4rem;
+  }
 }
 
 .content {

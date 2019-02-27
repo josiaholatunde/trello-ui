@@ -9,6 +9,12 @@
   @media only screen and (max-width: 46rem) {
       padding: 3rem;
   }
+  @media only screen and (max-width: 42rem) {
+    flex-direction: column;
+  }
+  @media only screen and (max-width: 37rem) {
+
+  }
 }
 
 .arrow-nav-right {
@@ -47,6 +53,10 @@
   @media only screen and (max-width: 46rem) {
       padding: 1.8rem;
       margin-right: 3.5rem;
+  }
+  @media only screen and (max-width: 42rem) {
+    margin-right: 0;
+    margin-bottom: 3.5rem;
   }
 }
 .reviews {

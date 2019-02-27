@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit, OnDestroy {
        } else {
          this.bookingType = BookingSubjectType.Hotel;
        }
-       this.bookingService.defaultBookingType.next(this.bookingType);
+       this.bookingService.changeBookingType(this.bookingType);
        if (this.router.url.endsWith('true')) {
          this.userService.changeLoggedInStatus(true);
        }

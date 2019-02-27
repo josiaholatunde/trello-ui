@@ -99,6 +99,8 @@ export class HeaderComponent implements OnInit {
     this.userService.changeLoggedInStatus(false);
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    this.router.navigate(['home'])
+    this.alertifyService.success('Logged out successfully');
   }
   getDefaultPhoto() {
     return this.userService.defPhoto;

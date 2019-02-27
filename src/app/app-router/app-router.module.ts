@@ -10,12 +10,20 @@ import { RegisterComponent } from '../components/register/register.component';
 import { MyBookingsComponent } from '../components/my-bookings/my-bookings.component';
 import { BookingEditComponent } from '../components/booking-edit/booking-edit.component';
 import { PhotoUploadComponent } from '../components/photo-upload/photo-upload.component';
+import { MessageComponent } from '../components/message/message.component';
+import { MessageListResolver } from '../resolvers/message-list.resolver';
 
 
 const routes: Routes = [
   {
     path: 'bookings/edit/:id',
     component: BookingEditComponent,
+    // resolve: [ BookingSubjectResolver ]
+  },
+  {
+    path: 'users/messages',
+    component: MessageComponent,
+    resolve: { messages: MessageListResolver }
     // resolve: [ BookingSubjectResolver ]
   },
   {

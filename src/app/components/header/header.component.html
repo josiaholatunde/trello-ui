@@ -32,7 +32,7 @@
              <span class="user-nav__notification">7</span>
          </div>
          <div class="user-nav__user">
-             <img [src]="loggedInUser.url || defaultPhotoUrl" alt="User photo" class="user-nav__user-photo">
+             <img [src]="loggedInUser.photoUrl || defaultPhotoUrl" alt="User photo" class="user-nav__user-photo">
              <span class="user-nav__user-name">{{ loggedInUser.userName | titlecase }}</span>
              <div class="dropdown-content">
                <a [routerLink]="['/photo/upload']" class="dropdown-item">Upload Photo</a>

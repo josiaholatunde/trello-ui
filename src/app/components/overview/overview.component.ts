@@ -9,9 +9,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class OverviewComponent implements OnInit {
 
   @Input() bookingSubject: BookingSubject;
+  starsCount: any[] = [];
   constructor() { }
 
   ngOnInit() {
+    for(let i = 0; i < this.bookingSubject.avgRating; i++) {
+      this.starsCount.push(i);
+    }
   }
 
 }

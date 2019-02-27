@@ -26,12 +26,13 @@
          </div>
     </div>
     <div class="user-reviews">
-        <figure class="review" *ngFor="let comment of bookingComments">
+        <div *ngIf="bookingSubject.comments.length > 0">
+          <figure class="review" *ngFor="let comment of bookingSubject.comments">
             <blockquote class="review__text">
               {{ comment.description }}
             </blockquote>
             <figcaption class="review__user">
-                <img src="../../../assets/img/user-4.jpg" class="review__photo" alt="User Photo" />
+                <img [src]="comment.photoUrl || getDefaultPhotoUrl()" class="review__photo" alt="User Photo" />
                 <div class="review__user-box">
                     <p class="review__user-name">{{ comment.fullName }}</p>
                     <p class="review__user-date">{{ comment.dateCommented | date: 'mediumDate'}}</p>
@@ -39,8 +40,9 @@
                 <div class="review__user-rating">{{ comment.rating }}</div>
             </figcaption>
         </figure>
+        </div>
          <button class="btn-inline overview__btn">Show All<span>&rarr;</span></button>
-         <button class="btn-inline overview__btn btn-review" *ngIf="isUserLoggedIn()" (click)="showDialog()">Add Review
+         <button class="btn-inline overview__btn btn-review" *ngIf="isLoggedIn" (click)="showDialog()">Add Review
            <i class="fa fa-pencil"></i>
          </button>
     </div>
@@ -48,4 +50,4 @@
       <i class="fa fa-angle-right arrow-style fa-4x" (click)="loadNextBookingSubject()"></i>
     </div>
 </div>
-<app-user-comment [passDisplay]="display"></app-user-comment>
+<app-user-comment [passDisplay]="display" [bookingId]="bookingSubject.id"></app-user-comment>

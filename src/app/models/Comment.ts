@@ -4,5 +4,6 @@ export interface Comment {
   dateCommented: Date;
   rating: number;
   isRecommended: boolean;
+  photoUrl: string;
   fullName?: string;
 }

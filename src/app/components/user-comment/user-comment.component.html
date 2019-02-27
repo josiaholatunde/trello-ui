@@ -4,11 +4,15 @@
 <form #userCommentControl="ngForm" (ngSubmit)="createComment()" >
     <div class="form-group animation-group">
         <label class="login-form__label">Description</label>
-        <textarea  class="login-form__textarea" name="description" [(ngModel)]="commentDto.description" rows="5" minlength="25"  #descriptionControl="ngModel">
+        <textarea  class="login-form__textarea" name="description" [(ngModel)]="commentDto.description" rows="5" required
+        minlength="25"  #descriptionControl="ngModel">
         </textarea>
         <span class="error-feedback-textarea" *ngIf="descriptionControl.invalid && descriptionControl.touched">
             Description field is required
         </span>
+        <span class="error-feedback-textarea" *ngIf="descriptionControl.hasError('minlength') && descriptionControl.touched">
+          Comments must not be less than 25 characters
+      </span>
     </div>
     <div class="form-group animation-group">
         <label class="login-form__label" for="rating">Rating</label>

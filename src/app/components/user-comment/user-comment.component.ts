@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BookingSubjectType } from 'src/app/models/booking-subject-type';
 import { BookingSubjectService } from 'src/app/services/booking-subject.service';
 import { AlertifyService } from 'src/app/services/alertify.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-comment',
@@ -12,10 +13,12 @@ import { AlertifyService } from 'src/app/services/alertify.service';
 export class UserCommentComponent implements OnInit {
 
   @Input() passDisplay;
+  @Input() bookingId;
   commentDto: any = {};
   paramName: any;
   bookingType: BookingSubjectType;
-  constructor(private route: ActivatedRoute, private bookingService: BookingSubjectService, private alertify: AlertifyService) {
+  constructor(private route: ActivatedRoute, private bookingService: BookingSubjectService, private userService: UserService,
+    private alertify: AlertifyService) {
     route.params.subscribe(params => {
       if (params['name']) {
         this.paramName = params['name'];
@@ -42,8 +45,8 @@ export class UserCommentComponent implements OnInit {
 
 
   createComment() {
-    const bookingId = this.getBookingId();
-    this.bookingService.createComment(this.commentDto, bookingId).subscribe(res => {
+    this.commentDto.userId = this.userService.getLoggedInUser().id;
+    this.bookingService.createComment(this.commentDto, this.bookingId).subscribe(res => {
       this.alertify.success('Successfully created comment for the booking');
     }, err => {
       this.alertify.error(err);

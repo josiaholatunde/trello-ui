@@ -6,7 +6,13 @@
   justify-content: space-between;
   align-items: center;
   font-size: 1.4rem;
+  @media only screen and (max-width: 36rem) {
+    flex-wrap: wrap;
+    align-content: space-around;
+    height: 11rem;
+  }
 }
+
 
 
 //LOGO
@@ -22,6 +28,12 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  @media only screen and (max-width: 36rem) {
+    order: 1;
+    flex: 0 0 100%;
+    width: 100%;
+    overflow: hidden;
+  }
 
   &__input {
       font-size: inherit;
@@ -58,6 +70,9 @@
           outline: none;
           transform: translateY(2px);
       }
+      @media only screen and (max-width: 36rem) {
+        left: 42rem;
+      }
 
   }
 }
@@ -75,6 +90,9 @@
       height: 100%;
       display: flex;
       align-items: center;
+      @media only screen and (max-width: 35rem) {
+        margin: 0 1.2rem;
+      }
 
   }
 
@@ -97,9 +115,7 @@
       border-radius: 50%;
       margin-right: .4rem;
   }
-  &__user-name {
 
-  }
   &__notification {
       height: 1.75rem;
       width: 1.75rem;

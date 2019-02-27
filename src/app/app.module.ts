@@ -9,7 +9,8 @@ import {DialogModule} from 'primeng/dialog';
 import { JwtModule } from '@auth0/angular-jwt';
 import {TabViewModule} from 'primeng/tabview';
 import { FileUploadModule } from 'ng2-file-upload';
-
+import {TimeAgoPipe} from 'time-ago-pipe';
+import { PaginationModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -36,6 +37,9 @@ import { TestHeaderComponent } from './components/test-header/test-header.compon
 import { MyBookingsComponent } from './components/my-bookings/my-bookings.component';
 import { BookingEditComponent } from './components/booking-edit/booking-edit.component';
 import { PhotoUploadComponent } from './components/photo-upload/photo-upload.component';
+import { MessageListResolver } from './resolvers/message-list.resolver';
+import { MessageComponent } from './components/message/message.component';
+import { MessageService } from './services/messages.service';
 
 
 const tokenGetter = () => localStorage.getItem('token');
@@ -61,7 +65,9 @@ const tokenGetter = () => localStorage.getItem('token');
     TestHeaderComponent,
     MyBookingsComponent,
     BookingEditComponent,
-    PhotoUploadComponent
+    PhotoUploadComponent,
+    MessageComponent,
+    TimeAgoPipe
   ],
   imports: [
     BrowserModule,
@@ -75,6 +81,7 @@ const tokenGetter = () => localStorage.getItem('token');
     DialogModule,
     ReactiveFormsModule,
     TabViewModule,
+    PaginationModule.forRoot(),
     FileUploadModule,
     JwtModule.forRoot({
      config: {
@@ -89,7 +96,9 @@ const tokenGetter = () => localStorage.getItem('token');
     BookingSubjectResolver,
     AlertifyService,
     UserService,
-    ErrorInterceptor
+    ErrorInterceptor,
+    MessageListResolver,
+    MessageService
    ],
   bootstrap: [AppComponent]
 })
