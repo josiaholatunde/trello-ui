@@ -15,7 +15,6 @@ const httpOptions = {
 
 @Injectable()
 export class MessageService {
-
   private baseUrl = `${environment.apiUrl}`;
   bookingType: any;
   constructor(private http: HttpClient,private userService: UserService) { }
@@ -51,6 +50,10 @@ export class MessageService {
    sendMessage(messageToCreateDto: any) {
     const userId = this.userService.getLoggedInUser().id;
     return this.http.post<Message>(`${this.baseUrl}/users/${userId}/message`, messageToCreateDto).pipe();
+  }
+  getNotificationCount(): any {
+    const userId = this.userService.getLoggedInUser().id;
+    return this.http.get<any[]>(`${this.baseUrl}/users/${userId}/message/unread`).pipe();
   }
 
 }

@@ -5,6 +5,7 @@ declare let alertify: any;
   providedIn: 'root'
 })
 export class AlertifyService {
+  notificationCount: any;
 
   constructor() { }
   confirm(message: string, okCallBack: () => any) {

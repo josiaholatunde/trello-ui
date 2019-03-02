@@ -1,3 +1,4 @@
+import { MessageService } from './../../services/messages.service';
 import { Component, OnInit, EventEmitter, Output, Input, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
 import { BookingSubjectType } from 'src/app/models/booking-subject-type';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -30,8 +31,9 @@ export class HeaderComponent implements OnInit {
   testProps: string;
   routePath: string;
   defaultPhotoUrl: string;
+  notificationCount: number;
   constructor(private route: ActivatedRoute, private router: Router, private bookingService: BookingSubjectService,
-    private alertifyService: AlertifyService, private userService: UserService) {
+    private alertifyService: AlertifyService, private userService: UserService, private messageService: MessageService) {
    }
 
   getBookingSubject(bookingType: any) {
@@ -45,6 +47,7 @@ export class HeaderComponent implements OnInit {
     this.bookingService.defaultBookingTypeObservable.subscribe(type => {
       this.bookingType = BookingSubjectType[type];
     });
+    this.getUnreadNotifications();
     this.userService.defaultPhotoUrlObservable.subscribe(ph => this.defaultPhotoUrl = ph);
 
     this.setBookingType();
@@ -104,6 +107,9 @@ export class HeaderComponent implements OnInit {
   }
   getDefaultPhoto() {
     return this.userService.defPhoto;
+  }
+  getUnreadNotifications() {
+    this.messageService.getNotificationCount().subscribe(res => this.notificationCount = res);
   }
 
 }
