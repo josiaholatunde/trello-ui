@@ -35,14 +35,6 @@ export class DetailComponent implements OnInit {
       this.loggedInUser = this.userService.getLoggedInUser();
       this.isLoggedIn = status;
     });
-    /* const minValue = 0;
-    const maxValue = this.bookingSubject.comments.length - 1;
-    let comment: Comment;
-    for (let i = 0; i < 1; i++) {
-      comment = this.bookingSubject.comments[this.generateRandomNumber(minValue, maxValue)];
-      this.bookingComments.push(comment);
-    } */
-    console.log('book Comments', this.bookingSubject);
   }
 
   generateRandomNumber(minValue, maxValue) {
