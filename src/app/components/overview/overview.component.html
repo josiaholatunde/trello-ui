@@ -12,7 +12,7 @@
          <button class="btn-inline overview__btn">{{ bookingSubject.city }}, {{ bookingSubject.country }}</button>
     </div>
     <div class="overview__rating">
-        <div class="overview__rating-average"> {{ bookingSubject.avgRating || 0 }} </div>
+        <div class="overview__rating-average"> {{ bookingSubject.avgRating | number: '1.1-1' || 0 }} </div>
         <div class="overview__rating-count"> {{ bookingSubject.noOfVoters }} votes </div>
     </div>
 </div>

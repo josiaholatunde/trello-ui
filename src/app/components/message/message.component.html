@@ -43,4 +43,15 @@
       </div>
     </div>
   </div>
+  <div class="justify-center">
+      <p-paginator
+      [rows]="10"
+      name="currentPage"
+      [(ngModel)]="pagination.currentPage"
+      (pageChanged)="pageChanged($event)"
+       [totalRecords]="pagination.totalItems"
+       [rowsPerPageOptions]="[pagination.itemsPerPage]"
+       ngDefaultControl>
+      </p-paginator>
+  </div>
 </div>

@@ -45,6 +45,9 @@ export class HomeComponent implements OnInit, OnDestroy {
        }
         this.loadBookingSubjects();
       }
+      if (this.userService.isUserLoggedIn()) {
+        this.userService.changeLoggedInStatus(true);
+       }
      });
      this.bookingService.searchParamsTypeObservable.subscribe($event => {
         this.loadBookingSubjects($event);

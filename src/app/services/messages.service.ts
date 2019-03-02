@@ -1,3 +1,4 @@
+import { Message } from 'src/app/models/message';
 import { PaginationResult, MessagePaginationResult } from './../models/pagination-result';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
@@ -45,6 +46,11 @@ export class MessageService {
   getMessageThread(recipientId: any) {
     const userId = this.userService.getLoggedInUser().id;
     return this.http.get<any[]>(`${this.baseUrl}/users/${userId}/message/thread/${recipientId}`).pipe();
+  }
+
+   sendMessage(messageToCreateDto: any) {
+    const userId = this.userService.getLoggedInUser().id;
+    return this.http.post<Message>(`${this.baseUrl}/users/${userId}/message`, messageToCreateDto).pipe();
   }
 
 }

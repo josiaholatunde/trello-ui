@@ -10,7 +10,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import {TabViewModule} from 'primeng/tabview';
 import { FileUploadModule } from 'ng2-file-upload';
 import {TimeAgoPipe} from 'time-ago-pipe';
-import { PaginationModule } from 'ngx-bootstrap';
+import {PaginatorModule} from 'primeng/paginator';
 
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -30,7 +30,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AlertifyService } from './services/alertify.service';
 import { UserService } from './services/user.service';
-import { ErrorInterceptor } from './services/error.interceptor';
+import { ErrorInterceptor, ErrorInterceptorProvider } from './services/error.interceptor';
 import { CreateBookingComponent } from './components/create-booking/create-booking.component';
 import { UserCommentComponent } from './components/user-comment/user-comment.component';
 import { TestHeaderComponent } from './components/test-header/test-header.component';
@@ -40,6 +40,7 @@ import { PhotoUploadComponent } from './components/photo-upload/photo-upload.com
 import { MessageListResolver } from './resolvers/message-list.resolver';
 import { MessageComponent } from './components/message/message.component';
 import { MessageService } from './services/messages.service';
+import { ChatDetailComponent } from './components/chat-detail/chat-detail.component';
 
 
 const tokenGetter = () => localStorage.getItem('token');
@@ -67,7 +68,8 @@ const tokenGetter = () => localStorage.getItem('token');
     BookingEditComponent,
     PhotoUploadComponent,
     MessageComponent,
-    TimeAgoPipe
+    TimeAgoPipe,
+    ChatDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +83,7 @@ const tokenGetter = () => localStorage.getItem('token');
     DialogModule,
     ReactiveFormsModule,
     TabViewModule,
-    PaginationModule.forRoot(),
+    PaginatorModule,
     FileUploadModule,
     JwtModule.forRoot({
      config: {
@@ -96,7 +98,7 @@ const tokenGetter = () => localStorage.getItem('token');
     BookingSubjectResolver,
     AlertifyService,
     UserService,
-    ErrorInterceptor,
+    ErrorInterceptorProvider,
     MessageListResolver,
     MessageService
    ],

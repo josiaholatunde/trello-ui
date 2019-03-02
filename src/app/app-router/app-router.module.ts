@@ -12,6 +12,7 @@ import { BookingEditComponent } from '../components/booking-edit/booking-edit.co
 import { PhotoUploadComponent } from '../components/photo-upload/photo-upload.component';
 import { MessageComponent } from '../components/message/message.component';
 import { MessageListResolver } from '../resolvers/message-list.resolver';
+import { ChatDetailComponent } from '../components/chat-detail/chat-detail.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,12 @@ const routes: Routes = [
     path: 'users/messages',
     component: MessageComponent,
     resolve: { messages: MessageListResolver }
+    // resolve: [ BookingSubjectResolver ]
+  },
+  {
+    path: 'users/messages/:id',
+    component: ChatDetailComponent,
+    // resolve: { messages: MessageListResolver }
     // resolve: [ BookingSubjectResolver ]
   },
   {
